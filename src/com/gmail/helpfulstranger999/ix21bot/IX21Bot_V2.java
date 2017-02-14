@@ -68,12 +68,32 @@ public class IX21Bot_V2 extends PircBot {
 					out.println("Nickname already in use! Please try again.");
 					e1.printStackTrace();
 					out.println("Exiting program");
+					try {
+						IX21BotMain.commandsquery.close();
+						IX21BotMain.usersquery.close();
+						IX21BotMain.commandsconn.close();
+						IX21BotMain.usersconn.close();
+					} catch (SQLException e2) {
+						out.println("Error Closing Database: ");
+						e2.printStackTrace();
+						System.exit(25);
+					}
 					System.exit(ERR_NICKNAMEINUSE);
 				} catch (Exception e1) {
 					out.println("Another error happened while reconnecting: ");
 					e1.printStackTrace();
 					out.println("Exiting program");
 					//23 = Error reconnecting
+					try {
+						IX21BotMain.commandsquery.close();
+						IX21BotMain.usersquery.close();
+						IX21BotMain.commandsconn.close();
+						IX21BotMain.usersconn.close();
+					} catch (SQLException e3) {
+						out.println("Error Closing Database: ");
+						e3.printStackTrace();
+						System.exit(25);
+					}
 					System.exit(23);
 				}
 			}
