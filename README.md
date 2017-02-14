@@ -1,3 +1,1 @@
-This is the work-in-progress bot for streamer Oliverix21. This bot is being coded in Java with Pircbot. It is being temporarily called ix21bot, though the final name has not yet been decided.
-
-twitch.tv/oliverix21
+This project is a currently work in progress Twitch chat bot for twitch streamer Oliverix21, being written in Java and using the Pircbot framework. The name, ix21bot, is the in-development name, since the name for the bot has not been finalized yet.
