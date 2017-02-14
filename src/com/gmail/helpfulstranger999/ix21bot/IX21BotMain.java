@@ -1,6 +1,6 @@
 package com.gmail.helpfulstranger999.ix21bot;
 
-import java.io.IOException;
+import static java.lang.System.out;
 import org.jibble.pircbot.*;
 
 public class IX21BotMain {
@@ -14,13 +14,10 @@ public class IX21BotMain {
 		try {
 			bot.connect("irc.twitch.tv", port, "oauth:bvolwngwvomszb1ubj90ghc9y736xc");
 		} catch (NickAlreadyInUseException e) {
-			System.out.println("Nickname already in use! Please try again.");
+			out.println("Nickname already in use! Please try again.");
 			e.printStackTrace();
-		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		} catch (IrcException e) {
-			// TODO Auto-generated catch block
+		} catch (Exception e) {
+			out.println("An error happened: ");
 			e.printStackTrace();
 		}
 		bot.joinChannel("#helpfulstranger999");
