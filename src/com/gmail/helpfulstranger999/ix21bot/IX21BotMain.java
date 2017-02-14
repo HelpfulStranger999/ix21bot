@@ -2,10 +2,16 @@ package com.gmail.helpfulstranger999.ix21bot;
 
 import static java.lang.System.out;
 import org.jibble.pircbot.*;
+import java.sql.*;
 
 public class IX21BotMain {
 
 	public static int port = 6667;
+	public static Connection commandsconn = null;
+	public static Connection usersconn = null;
+	public static Statement commandsquery = null;
+	public static Statement usersquery = null;
+	
 	public static void main(String[] args) {
 		
 		
@@ -21,6 +27,19 @@ public class IX21BotMain {
 			e.printStackTrace();
 		}
 		bot.joinChannel("#helpfulstranger999");
+		
+		try {
+			Class.forName("org.sqlite.JDBC");
+			commandsconn = DriverManager.getConnection("jdbc:sqlite:commands.db");
+			commandsquery = commandsconn.createStatement();
+			
+			usersconn = DriverManager.getConnection("jdbc:sqlite:users.db");
+			usersquery = usersconn.createStatement();
+		} catch (Exception e) {
+			System.err.println(e.getClass().getName() + ": " + e.getMessage());
+			//25 = SQLite Exception
+			System.exit(25);
+		}
 	}
 
 }

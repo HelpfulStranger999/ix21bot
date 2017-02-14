@@ -1,8 +1,9 @@
 package com.gmail.helpfulstranger999.ix21bot;
 
 import org.jibble.pircbot.*;
-import static java.util.concurrent.TimeUnit.MICROSECONDS;
+import static java.util.concurrent.TimeUnit.*;
 import static java.lang.System.out;
+import java.sql.*;
 
 public class IX21Bot_V2 extends PircBot {
 
@@ -27,6 +28,16 @@ public class IX21Bot_V2 extends PircBot {
 			this.disconnect();
 			safeshutdown = false;
 			System.out.println("Disconnected Successfully!");
+			try {
+				IX21BotMain.commandsquery.close();
+				IX21BotMain.usersquery.close();
+				IX21BotMain.commandsconn.close();
+				IX21BotMain.usersconn.close();
+			} catch (SQLException e) {
+				out.println("Error Closing Database: ");
+				e.printStackTrace();
+				System.exit(25);
+			}
 			System.exit(0);
 		}
 	}
@@ -45,6 +56,26 @@ public class IX21Bot_V2 extends PircBot {
 			} catch (Exception e) {
 				out.println("An error happened while reconnecting: ");
 				e.printStackTrace();
+				try {
+					MINUTES.sleep(5);
+				} catch (InterruptedException e1) {
+					out.println("ERROR Shutting down!");
+					e1.printStackTrace();
+				}
+				try {
+					this.reconnect();
+				} catch (NickAlreadyInUseException e1) {
+					out.println("Nickname already in use! Please try again.");
+					e1.printStackTrace();
+					out.println("Exiting program");
+					System.exit(ERR_NICKNAMEINUSE);
+				} catch (Exception e1) {
+					out.println("Another error happened while reconnecting: ");
+					e1.printStackTrace();
+					out.println("Exiting program");
+					//23 = Error reconnecting
+					System.exit(23);
+				}
 			}
 		}
 	}
