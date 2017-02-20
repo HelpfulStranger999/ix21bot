@@ -1,4 +1,4 @@
-package com.gmail.helpfulstranger999.ix21bot;
+package com.gmail.helpfulstranger999.ix21bot.pircbot;
 
 import org.jibble.pircbot.User;
 

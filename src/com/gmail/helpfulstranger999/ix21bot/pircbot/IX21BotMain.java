@@ -1,4 +1,4 @@
-package com.gmail.helpfulstranger999.ix21bot;
+package com.gmail.helpfulstranger999.ix21bot.pircbot;
 
 import static java.lang.System.out;
 import org.jibble.pircbot.*;
@@ -15,7 +15,7 @@ public class IX21BotMain {
 	public static void main(String[] args) {
 		
 		
-		IX21Bot_V2 bot = new IX21Bot_V2();
+		IX21Bot bot = new IX21Bot();
 		bot.setVerbose(true);
 		try {
 			bot.connect("irc.twitch.tv", port, "oauth:bvolwngwvomszb1ubj90ghc9y736xc");

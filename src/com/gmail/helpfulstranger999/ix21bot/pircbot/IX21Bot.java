@@ -1,16 +1,16 @@
-package com.gmail.helpfulstranger999.ix21bot;
+package com.gmail.helpfulstranger999.ix21bot.pircbot;
 
 import org.jibble.pircbot.*;
 import static java.util.concurrent.TimeUnit.*;
 import static java.lang.System.out;
 import java.sql.*;
 
-public class IX21Bot_V2 extends PircBot {
+public class IX21Bot extends PircBot {
 
 	String[] commands;
 	boolean safeshutdown = false;
 	
-	public IX21Bot_V2 () {
+	public IX21Bot () {
 		this.setName("anonymoususer_1234");
 		this.setAutoNickChange(true);
 	}
@@ -40,10 +40,23 @@ public class IX21Bot_V2 extends PircBot {
 			}
 			System.exit(0);
 		}
+		if(sender.equals("helpfulstranger999") && message.equals("!mod")) {
+			User[] userarray = this.getUsers(channel);
+			for(User user : userarray) {
+				if(user.isOp()) {
+					sendMessage(channel, user.toString() + " is a moderator");
+				} else if (!(user.isOp())) {
+					sendMessage(channel, user.toString() + " is not a moderator");
+				}
+			}
+		}
 	}
 	
 	public void onConnect () {
 		sendMessage("#helpfulstranger999", "The bot is connected and running. SeemsGood");
+		//sendRawLine("CAP REQ :twitch.tv/membership");
+		//sendRawLine("CAP REQ :twitch.tv/commands");
+		//sendRawLine("CAP REQ :twitch.tv/tags");
 	}
 	
 	public void onDisconnect () {
@@ -85,10 +98,10 @@ public class IX21Bot_V2 extends PircBot {
 					out.println("Exiting program");
 					//23 = Error reconnecting
 					try {
-						IX21BotMain.commandsquery.close();
-						IX21BotMain.usersquery.close();
-						IX21BotMain.commandsconn.close();
-						IX21BotMain.usersconn.close();
+						if(IX21BotMain.commandsquery != null) IX21BotMain.commandsquery.close();
+						if(IX21BotMain.usersquery != null) IX21BotMain.usersquery.close();
+						if(IX21BotMain.commandsconn != null) IX21BotMain.commandsconn.close();
+						if(IX21BotMain.usersconn != null) IX21BotMain.usersconn.close();
 					} catch (SQLException e3) {
 						out.println("Error Closing Database: ");
 						e3.printStackTrace();
@@ -99,4 +112,5 @@ public class IX21Bot_V2 extends PircBot {
 			}
 		}
 	}
+	
 }
