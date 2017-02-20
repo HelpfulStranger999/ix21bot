@@ -18,7 +18,7 @@ public class IX21BotMain {
 		IX21Bot bot = new IX21Bot();
 		bot.setVerbose(true);
 		try {
-			bot.connect("irc.twitch.tv", port, "oauth:bvolwngwvomszb1ubj90ghc9y736xc");
+			bot.connect("irc.twitch.tv", port, "oauth:7lfe5byck0k49g80lc4auryriywhdb");
 		} catch (NickAlreadyInUseException e) {
 			out.println("Nickname already in use! Please try again.");
 			e.printStackTrace();

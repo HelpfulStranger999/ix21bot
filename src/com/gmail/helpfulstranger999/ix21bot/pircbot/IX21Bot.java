@@ -11,7 +11,7 @@ public class IX21Bot extends PircBot {
 	boolean safeshutdown = false;
 	
 	public IX21Bot () {
-		this.setName("anonymoususer_1234");
+		this.setName("wipdevbot");
 		this.setAutoNickChange(true);
 	}
 	
