@@ -4,6 +4,7 @@ import static java.lang.System.out;
 import org.jibble.pircbot.*;
 import java.sql.*;
 
+@Deprecated
 public class IX21BotMain {
 
 	public static int port = 6667;

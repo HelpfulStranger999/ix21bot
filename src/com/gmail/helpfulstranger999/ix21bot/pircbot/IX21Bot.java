@@ -5,6 +5,7 @@ import static java.util.concurrent.TimeUnit.*;
 import static java.lang.System.out;
 import java.sql.*;
 
+@Deprecated
 public class IX21Bot extends PircBot {
 
 	String[] commands;

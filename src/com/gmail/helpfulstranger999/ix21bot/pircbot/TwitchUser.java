@@ -5,6 +5,7 @@ import org.jibble.pircbot.*;
 import org.sqlite.*;
 
 @SuppressWarnings("unused")
+@Deprecated
 public class TwitchUser {
 
 	
