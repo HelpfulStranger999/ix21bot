@@ -1,0 +1,2 @@
+To download IX21Bot, download both the latest JAR of the bot and either start.bat or start.sh, the former if your OS is Windows or Windows based, the latter if it is Mac, or UNIX-based.
+To start the bot, run start.bat/start.sh. 
